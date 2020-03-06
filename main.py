@@ -47,7 +47,8 @@ def name2json():
     '''
     print('---正在生成 json 文件...')
     files = os.listdir(g_path)
-    names = [os.path.splitext(file)[0] for file in files]
+    names = [os.path.splitext(file)[0]
+             for file in files if not file.endswith('.exe')]
     obj = {'files': files, 'names': names}
     with open(f'output.json', 'w', encoding='utf-8') as f:
         f.write(json.dumps(obj, ensure_ascii=False))
